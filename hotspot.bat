@@ -2,8 +2,6 @@
 cls
 goto :menu
 
-
-
 :menu
 echo Informe a opcao:
 echo 1 - Iniciar rede Wifi ja configurada
@@ -58,9 +56,14 @@ goto end
 
 :limpar
 echo Limpando configuracoes...
+echo Parando o servico Wlan...
 net stop wlansvc
+echo Deletando Reg Key...
 reg delete hklm\system\currentcontrolset\services\wlansvc\parameters\hostednetworksettings /v hostednetworksettings
+echo Reiniciando o servico Wlan...
 net start wlansvc
+echo Desabilitando a 'hostednetwork'...
+netsh wlan set hostednetwork mode=disallow
 echo Limpo com sucesso
 pause
 cls
