@@ -35,6 +35,10 @@ echo Aguarde...
 netsh wlan set hostednetwork mode=allow ssid=%ssid% key=%senha%
 netsh wlan start hostednetwork
 echo Iniciado com sucesso
+pause
+cls
+goto :menu
+goto end
 
 :parar
 echo Parando...
