@@ -20,7 +20,6 @@ goto end
 :iniciar
 echo Iniciando...
 netsh wlan start hostednetwork
-echo Iniciado com sucesso
 pause
 cls
 goto :menu
@@ -32,7 +31,6 @@ set /p senha=Digite a senha da rede:
 echo Aguarde...
 netsh wlan set hostednetwork mode=allow ssid=%ssid% key=%senha%
 netsh wlan start hostednetwork
-echo Iniciado com sucesso
 pause
 cls
 goto :menu
@@ -41,7 +39,6 @@ goto end
 :parar
 echo Parando...
 netsh wlan stop hostednetwork
-echo Parado com sucesso
 pause
 cls
 goto :menu
@@ -64,7 +61,6 @@ echo Reiniciando o servico Wlan...
 net start wlansvc
 echo Desabilitando a 'hostednetwork'...
 netsh wlan set hostednetwork mode=disallow
-echo Limpo com sucesso
 pause
 cls
 goto :menu
