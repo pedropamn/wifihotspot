@@ -1,16 +1,8 @@
-::Ainda contém bugs
-
 @echo off
 cls
 goto :menu
 
-set /p op=Digite sua opcao: 
 
-if %op%==1 (goto :iniciar) 
-if %op%==2 (goto :setar) 
-if %op%==3 (goto :parar) 
-if %op%==4 (goto :listar) 
-if %op%==5 (goto :limpar)
 
 :menu
 echo Informe a opcao:
@@ -19,6 +11,12 @@ echo 2 - Setar Rede Wifi
 echo 3 - Parar rede Wifi
 echo 4 - Listar configuracoes
 echo 5 - Limpar configuracoes
+set /p op=Digite sua opcao: 
+if %op%==1 (goto :iniciar) 
+if %op%==2 (goto :setar) 
+if %op%==3 (goto :parar) 
+if %op%==4 (goto :listar) 
+if %op%==5 (goto :limpar)
 goto end
 
 :iniciar
@@ -26,6 +24,7 @@ echo Iniciando...
 netsh wlan start hostednetwork
 echo Iniciado com sucesso
 pause
+cls
 goto :menu
 goto end
 
@@ -41,9 +40,17 @@ echo Iniciado com sucesso
 echo Parando...
 netsh wlan stop hostednetwork
 echo Parado com sucesso
+pause
+cls
+goto :menu
+goto end
 
 :listar
 netsh wlan show hostednetwork
+pause
+cls
+goto :menu
+goto end
 
 :limpar
 echo Limpando configuracoes...
@@ -51,6 +58,7 @@ net stop wlansvc
 reg delete hklm\system\currentcontrolset\services\wlansvc\parameters\hostednetworksettings /v hostednetworksettings
 net start wlansvc
 echo Limpo com sucesso
-
-
 pause
+cls
+goto :menu
+goto end
